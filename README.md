@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI Story Imager
 
 A Streamlit web application that transforms images into captivating stories using Google's Gemini AI. Upload images, configure your story preferences, and generate creative narratives inspired by your visuals.
@@ -82,3 +83,7 @@ ai-story-generator/
 ## License
 
 This project is open source and available for personal and commercial use.
+=======
+# ai-story-imager
+Transform images into captivating stories using Google Gemini AI. A Streamlit web app for AI-powered narrative generation from visual content.
+>>>>>>> 584935d7a7f6faffe088b74a0f20909bb08d2903
