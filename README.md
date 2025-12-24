@@ -81,4 +81,4 @@ ai-story-generator/
 
 ## License
 
-This project is open source and available for personal and commercial use.
+This project is open source and available for personal use.
