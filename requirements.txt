@@ -1,5 +1,46 @@
+# Requirements for AI Story Imager
+# Install all dependencies: pip install -r requirements.txt
+
+# ============================================================================
+# RUNTIME DEPENDENCIES
+# ============================================================================
+
+# Web framework
 streamlit>=1.28.0
+
+# Google Gemini API and dependencies
 google-generativeai>=0.3.0
+google-ai-generativelanguage>=0.6.0
+google-api-core>=2.11.0
+google-api-python-client>=2.0.0
+google-auth>=2.0.0
+google-auth-httplib2>=0.2.0
+protobuf>=4.21.0
+pydantic>=2.0.0
+tqdm>=4.64.0
+typing-extensions>=4.0.0
+
+# Image processing
 pillow>=10.0.0
+
+# Environment variable management
 python-dotenv>=1.0.0
 
+# ============================================================================
+# TESTING DEPENDENCIES
+# ============================================================================
+
+# Testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
+pytest-playwright>=0.4.0
+playwright>=1.40.0
+
+# ============================================================================
+# DEVELOPMENT TOOLS
+# ============================================================================
+
+# Code quality tools
+ruff>=0.1.0
+black>=23.0.0

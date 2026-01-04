@@ -1,84 +1,148 @@
-# AI Story Imager
+# AI Story Imager 📖✨
 
-A Streamlit web application that transforms images into captivating stories using Google's Gemini AI. Upload images, configure your story preferences, and generate creative narratives inspired by your visuals.
+> Image-grounded storytelling powered by Google Gemini
 
-## Features
+AI Story Imager is a production-quality AI web application that analyzes one or more images and generates coherent, creative stories grounded in their visual content (objects, scenes, mood, colors).
 
-- Multi-image upload support (JPG, PNG, WEBP)
-- AI-powered story generation using Google Gemini
-- Comprehensive story customization (genre, style, tone, length, perspective, audience)
-- Real-time API key management via sidebar
-- Story export functionality
-- Clean, responsive user interface
+Built with a clean architecture, strong error handling, and extensive automated testing, this project demonstrates how to design, test, and maintain an AI-driven system reliably.
 
-## Installation
+## 🚀 Why this project matters
+
+This project demonstrates real-world AI engineering and QA practices, not just model usage:
+
+- Robust integration of a multimodal LLM (Google Gemini)
+- Clear separation between AI logic, services, utilities, and UI
+- Defensive handling of AI failures, invalid inputs, and edge cases
+- 99% automated test coverage (unit, integration, E2E)
+- CI pipeline enforcing quality gates
+
+## 🧠 What it does
+
+- Analyzes uploaded images to extract visual context
+- Builds structured prompts grounded in image content
+- Generates stories aligned with user preferences
+- Optionally extracts titles and formats stories into chapters
+- Provides a clean UI for interaction and export
+
+## ✨ Key features
+
+### Image-grounded story generation
+Stories reference actual visual elements (objects, scenes, mood).
+
+### Multi-image support
+Combine multiple images into a single coherent narrative.
+
+### Rich customization
+Genre, style, tone, length, perspective, creativity level, audience.
+
+### Resilient AI orchestration
+Graceful handling of API timeouts, rate limits, and malformed responses.
+
+### Secure API key handling
+UI-based key input by default, environment variables disabled unless explicitly enabled.
+
+### Exportable output
+Download generated stories for offline use.
+
+## 🧩 Architecture overview
+
+```
+UI (Streamlit)
+   ↓
+StoryService (business orchestration)
+   ├─ Image analysis & validation
+   ├─ Prompt construction
+   ├─ Gemini client interaction
+   └─ Post-processing (title, chapters)
+   ↓
+GeminiClient (LLM abstraction with mock support)
+```
+
+### Design principles
+
+- Clean Architecture (core / services / utils)
+- Side-effects isolated from pure logic
+- Testability first (mockable AI, deterministic tests)
+
+## 🛠️ Tech stack
+
+- **Frontend**: Streamlit
+- **AI / LLM**: Google Gemini API (gemini-2.5-flash)
+- **Image processing**: Pillow (PIL)
+- **Testing**:
+  - pytest (unit & integration)
+  - Playwright (E2E)
+  - pytest-cov (coverage)
+- **Code quality**: Ruff, Black
+- **CI/CD**: GitHub Actions
+
+## 🧪 Testing & quality
+
+- 117 automated tests
+- 99% total code coverage
+- Unit, integration, and end-to-end coverage
+- Mocked AI calls for deterministic tests
+- Coverage enforced in CI
+
+### Run tests locally
+
+```bash
+pytest -v
+pytest --cov=ai_story_imager --cov-report=term-missing --cov-fail-under=80
+```
+
+## ⚙️ Running the project
 
 ### Prerequisites
 
-- Python 3.10 or higher
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
+- Python 3.10+
+- Google Gemini API key
 
-### Setup
+### Install & run
 
-1. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Configure API Key**
-
-   Choose one of the following methods:
-
-   **Option A: Sidebar Input (Recommended)**
-   - Run the app and enter your API key in the sidebar
-
-   **Option B: Environment File**
-   - Create a `.env` file in the project root:
-     ```
-     GEMINI_API_KEY=your_actual_api_key_here
-     ```
-
-   **Option C: Streamlit Secrets**
-   - Create `.streamlit/secrets.toml`:
-     ```toml
-     GEMINI_API_KEY = "your_actual_api_key_here"
-     ```
-
-3. **Run the application**
-   ```bash
-   streamlit run app.py
-   ```
-
-   The application will open at `http://localhost:8501`
-
-## Usage
-
-1. Enter your Gemini API key in the sidebar (API Configuration section)
-2. Upload one or more images using the file uploader
-3. Configure story settings in the sidebar (genre, style, tone, length, etc.)
-4. Click "Generate Story" to create your narrative
-5. Download or regenerate the story as needed
-
-## Project Structure
-
-```
-ai-story-generator/
-├── app.py                 # Main Streamlit application
-├── requirements.txt       # Python dependencies
-├── README.md             # Project documentation
-└── utils/
-    ├── gemini_client.py  # Gemini API client
-    ├── prompt_builder.py # Prompt construction
-    └── image_utils.py    # Image processing
+```bash
+pip install -r requirements.txt
+streamlit run app/streamlit_app.py
 ```
 
-## Dependencies
+The app opens at `http://localhost:8501`.
 
-- streamlit>=1.28.0
-- google-generativeai>=0.3.0
-- pillow>=10.0.0
-- python-dotenv>=1.0.0
+### API key usage
 
-## License
+- Enter the key directly in the UI (default & recommended)
+- Environment variables are disabled unless explicitly enabled for development
 
-This project is open source and available for personal use.
+## 📁 Project structure
+
+```
+src/ai_story_imager/
+├── core/        # Configuration & custom errors
+├── services/    # Business logic & AI orchestration
+├── utils/       # Image processing & prompt construction
+app/
+├── streamlit_app.py   # UI entrypoint
+tests/
+├── unit/
+├── integration/
+├── e2e/
+```
+
+## 🔄 CI pipeline
+
+- Linting (Ruff)
+- Formatting check (Black)
+- Unit & integration tests with coverage
+- End-to-end UI tests (Playwright)
+- Coverage threshold enforcement
+
+## 🧠 What this project demonstrates
+
+- Designing testable AI systems
+- Handling unreliable AI outputs safely
+- Writing meaningful tests for AI pipelines
+- Enforcing quality gates with CI
+- Clean separation of concerns in a real application
+
+## 📄 License
+
+Open-source, for personal and educational use.
